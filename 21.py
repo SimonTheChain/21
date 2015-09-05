@@ -5,7 +5,7 @@ from random import randint
 def random_number():
 	return randint(1, 10)
 
-#asks if the player wants another card and checks if he busts
+#asks if the player wants another card
 def player_card():
 	while True:
 		answer = raw_input("\nDo you want another number?\n(y/n)> ").lower()
