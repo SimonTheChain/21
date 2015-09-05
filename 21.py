@@ -23,13 +23,14 @@ def player_card():
 def house_card():
 	if scores[1] < 17:
 		scores[1] += random_number()
-	elif scores[1] >= 17 and scores[1] <= 21:
+	elif scores[1] >= 17:
 		turns[1] = False
 	return scores
 
 #thanks the user and satisfies my ego ;-)
 def credits():
 	raw_input("\nThank you for using this program by Simon Lachaine.\nPress Enter to quit.\n")
+	quit()
 
 #presents the game to the user
 raw_input("""\nThis is a simplified version of Blackjack.
@@ -42,7 +43,8 @@ scores = [0, 0]
 turns = [True, True]
 	
 #deals a first hand of 2 random numbers to the player and the house
-scores[0], scores[1] = scores[0] + random_number() * 2, scores[1] + random_number() * 2
+scores[0], scores[1] = scores[0] + random_number() + random_number(), \
+scores[1] + random_number() + random_number()
 
 #player's turn
 while turns[0] == True:
@@ -50,29 +52,29 @@ while turns[0] == True:
 	player_card()
 	if scores[0] > 21:
 		print "\nYou have " + str(scores[0]) + "\nYou busted, you lose!"
-		quit(credits())
+		credits()
 	elif scores[0] == 21:
-		print "\nYou have 21, you win!"
-		quit(credits())
+		print "\nYou have " + str(scores[0]), "\nYou win!"
+		credits()
 
 #house's turn
 print "\nHouse's turn"
 while turns[1] == True:
-	print "\nYou have " + str(scores[0]), "\nHouse has " + str(scores[1])
+	print "\nHouse has " + str(scores[1])
 	raw_input("\nPress Enter")
 	house_card()
 	if scores[1] > 21:
-		print "\nHouse busted, you win!"
-		quit(credits())
+		print "\nHouse has " + str(scores[1]), "\nHouse busted, you win!"
+		credits()
 
 #checks the winning conditions		
 if scores[0] > scores[1]:
-	print "\nYou win!"
-	quit(credits())
-elif scores[1] > scores[0]:
-	print "\nYou lose."
-	quit(credits())
+	print "\nYou have " + str(scores[0]), "\nHouse has " + str(scores[1]), "\nYou win!"
+	credits()
+elif scores[0] < scores[1]:
+	print "\nYou have " + str(scores[0]), "\nHouse has " + str(scores[1]), "\nYou lose."
+	credits()
 elif scores[0] == scores[1]:
-	print "\nTie game."
-	quit(credits())
+	print "\nYou have " + str(scores[0]), "\nHouse has " + str(scores[1]), "\nTie game."
+	credits()
 #program end
