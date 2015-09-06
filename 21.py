@@ -27,13 +27,14 @@ def house_number():
 		turns[1] = False
 	return scores
 
+#checks if certain score conditions have been met
 def scores_check(scores_x, x, player_house, text_lose, text_win):
 	if scores_x > 21:
 		print player_house + str(scores_x) + text_lose
 		turns[x] = False
 		credits()
 	elif scores_x == 21:
-		print player_house + str(scores_x), text_win
+		print player_house + str(scores_x) + text_win
 		turns[x] = False
 		credits()
 	return turns
@@ -74,7 +75,7 @@ while True:
 	while turns[0] == True:
 		print "\nYou have " + str(scores[0])
 		player_number()
-		scores_check(scores[0], 0, "\nYou have ", "\nYou busted, you lose!", "\nYou win!")
+		scores_check(scores[0], 0, "\nYou have ", "\nYou busted, you lose!", "!!!\nYou win!")
 			
 	#house's turn
 	if turns[2] == True:
@@ -83,7 +84,7 @@ while True:
 			print "\nHouse has " + str(scores[1])
 			raw_input("\nPress Enter")
 			house_number()
-			scores_check(scores[1], 1, "\nHouse has ", "\nHouse busted, you win!", "\nYou lose.")
+			scores_check(scores[1], 1, "\nHouse has ", "\nHouse busted, you win!", "!!!\nYou lose.")
 				
 	#checks the winning conditions		
 	if turns[3] == True:
