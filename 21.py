@@ -83,6 +83,10 @@ while True:
 				print "\nHouse has " + str(scores[1]), "\nHouse busted, you win!"
 				credits()
 				break
+			elif scores[0] == 21:
+				print "\nHouse has " + str(scores[1]), "\nYou lose."
+				credits()
+				break
 				
 	#checks the winning conditions		
 	if turns[3] == True:
