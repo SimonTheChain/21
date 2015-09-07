@@ -31,7 +31,7 @@ class Players(object):
 	
 	def read_hand(self, player):
 		"""displays the value of the player's hand"""
-		print player.name + str(player.hand) + " in hand."
+		return player.name + str(player.hand) + " in hand."
 	
 	def win_check1(self, code_exec_x):
 		"""checks if certain score conditions have been met"""
@@ -67,7 +67,7 @@ while code_exec[0] == True:
 	player1.hand = deck.shuffle()
 	while code_exec[1] == True:
 		player1.hand += deck.shuffle()
-		player1.read_hand(player1)
+		print player1.read_hand(player1)
 		player1.win_check1(1)
 		if code_exec[1] == True:
 			while True:
@@ -84,18 +84,16 @@ while code_exec[0] == True:
 	if code_exec[2] == True:
 		print "\nDealer's turn:"
 		player2.hand = deck.shuffle() + deck.shuffle()
-		player2.read_hand(player2)
+		print player2.read_hand(player2)
 		while player2.hand < 17:
 			raw_input("Press Enter.")
 			player2.hand += deck.shuffle()
-			player2.read_hand(player2)
+			print player2.read_hand(player2)
 			player2.win_check1(2)
 
 	#checks the end results
 	if code_exec[3] == True:
-		print "\nResults:"
-		player1.read_hand(player1)
-		player2.read_hand(player2)
+		print "\nResults:%s%s" % (player1.read_hand(player1), player2.read_hand(player2))
 		if player1.hand > player2.hand:
 			print player1.name + "won!"
 		elif player1.hand < player2.hand:
