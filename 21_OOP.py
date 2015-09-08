@@ -77,7 +77,7 @@ player2 = Players("\nDealer has ", 0, 0, 1)
 
 #presents the game to the user
 raw_input("""\nWelcome to 21!\n
-You first receive two random numbers from 2 to 10, then you can ask for more.
+You first receive two random numbers from 1 to 10, then you can ask for more.
 You cannot receive twice the same number; try to reach 21 without going over!
 The dealer will take a number until he reaches 17; try to win more rounds than him!
 \nPress Enter to start.""")
