@@ -9,6 +9,7 @@ def credits():
 		if answer == "n":
 			code_exec[0] = False
 			print "\nFinal scores:"
+			print "|--Rounds--|---", player1.attempts, "----|----------|"
 			print "|---You----|---", player1.wins, "----|----------|"
 			print "|--Dealer--|---", player2.wins, "----|----------|\n"
 			raw_input("\nThank you for using this program by Simon Lachaine.\nPress Enter to quit.\n")
@@ -72,14 +73,15 @@ class Players(object):
 
 #creates objects from the classes
 deck1 = DeckOfCards()
-player1 = Players("\nYou have ", 0, 0, 1)
-player2 = Players("\nDealer has ", 0, 0, 1)
+player1 = Players("\nYou have ", 0, 0, 0)
+player2 = Players("\nDealer has ", 0, 0, 0)
 
 #presents the game to the user
 raw_input("""\nWelcome to 21!\n
 You first receive two random numbers from 1 to 10, then you can ask for more.
-You cannot receive twice the same number; try to reach 21 without going over!
-The dealer will take a number until he reaches 17; try to win more rounds than him!
+Try to reach 21 without going over!
+The dealer will take a number until he reaches 17; you share the same deck of numbers.
+Try to win more rounds than him!
 \nPress Enter to start.""")
 
 #bumper for each game
@@ -99,6 +101,9 @@ while code_exec[0] == True:
 	#list: [0]=program loop, [1]=player's turn, [2]=player2's turn, [3]=end results
 	code_exec = [True, True, True, True]
 
+	#updates the number of rounds played
+	player1.attempts += 1
+	
 	#bumper for each round
 	print "\n|----------|-new round|----------|"
 	print "|--Round---|---", player1.attempts, "----|----------|"
@@ -106,7 +111,6 @@ while code_exec[0] == True:
 	print "|--Dealer--|---", player2.wins, "----|----------|\n"
 	
 	#player's turn
-	player1.attempts += 1
 	deck1.deck_to_player(player1_hand, player1)
 	while code_exec[1] == True:
 		deck1.deck_to_player(player1_hand, player1)
