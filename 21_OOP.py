@@ -1,4 +1,4 @@
-#module needed to randomize an integer
+#module needed to randomly select from a list
 from random import choice
 
 #asks to play again
@@ -31,7 +31,7 @@ class DeckOfCards(object):
 		shuffle = choice(self.cards)
 		playerx_hand.append(shuffle)
 		playerx.hand += shuffle
-		self.deal = (self.cards).remove(shuffle)
+		(self.cards).remove(shuffle)
 		return playerx.hand
 
 #creates a class for the players
